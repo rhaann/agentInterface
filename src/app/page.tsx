@@ -20,7 +20,7 @@ export default function Home() {
 
       if (error) {
         console.error("Error fetching test run data:", error);
-        setErrorMsg(`Failed to load run data: ${error.message}`);
+        setErrorMsg(`Failed to load run data: ${error instanceof Error ? error.message : String(error)}`);
         setBestPaceChartData([]);
       } else if (rawData && rawData.length > 0) {
         // Call the utility function to process the data

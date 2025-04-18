@@ -13,6 +13,7 @@ import {
   ResponsiveContainer,
   Label
 } from 'recharts';
+import { SimplePaceDataPoint } from '@/utils/runningDataUtils';
 
 // --- Internal Helper Functions for Formatting ---
 // (These belong here as they relate to *how* the graph component displays things)
@@ -31,18 +32,18 @@ const formatPaceTick = (totalSeconds: number): string => {
 };
 
 // --- Component Props ---
-type GraphsProps = {
-  type: 'line' | 'bar';
-  data: Array<Record<string, number | string | Date>>;
+interface GraphsProps {
+  type: "line" | "bar"; // or whatever types you support
   title: string;
+  data: SimplePaceDataPoint[] | Record<string, string | number | Date>[];
   xDataKey: string;
   yDataKey: string;
-  color?: string;
-  yAxisLabel?: string;
+  color: string;
+  yAxisLabel: string;
   inverted?: boolean;
   isXAxisTime?: boolean;
   isYAxisPace?: boolean;
-};
+}
 
 export default function Graphs({
   type,
