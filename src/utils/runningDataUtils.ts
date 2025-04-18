@@ -25,11 +25,20 @@ export interface SimplePaceDataPoint {
   }
   
   /**
+   * Interface for raw run data from Supabase
+   */
+  export interface RawRunData {
+    [key: string]: any;  // Allow for dynamic column access
+    'Date': string;      // Date string that can be parsed by new Date()
+    'Best Pace': string; // Pace in "MM:SS" format
+  }
+  
+  /**
    * Processes raw run data to extract and format data specifically for the Best Pace Trend chart.
    * @param rawRunData Array of run objects from Supabase.
    * @returns An array of SimplePaceDataPoint objects, sorted by date.
    */
-  export function processRawDataForBestPaceChart(rawRunData: any[] | null): SimplePaceDataPoint[] {
+  export function processRawDataForBestPaceChart(rawRunData: RawRunData[] | null): SimplePaceDataPoint[] {
     if (!rawRunData) {
       return [];
     }

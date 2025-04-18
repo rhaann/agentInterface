@@ -50,7 +50,7 @@ export async function getTestRunById(id: number) {
  * @param filters Object containing column names and values to filter by
  * @returns Promise containing the filtered data or error
  */
-export async function getFilteredTestRunData(filters: Record<string, any>) {
+export async function getFilteredTestRunData(filters: Record<string, string | number | boolean | null>) {
   try {
     let query = supabase.from('test_run_data').select('*');
     
