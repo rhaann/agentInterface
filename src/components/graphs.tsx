@@ -33,7 +33,7 @@ const formatPaceTick = (totalSeconds: number): string => {
 // --- Component Props ---
 type GraphsProps = {
   type: 'line' | 'bar';
-  data: Array<Record<string, any>>;
+  data: Array<Record<string, number | string | Date>>;
   title: string;
   xDataKey: string;
   yDataKey: string;
