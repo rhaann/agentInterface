@@ -76,14 +76,13 @@ export default function Graphs({
     ...(isXAxisTime && {
         type: 'number' as const,
         scale: 'time' as const,
-        domain: ['dataMin', 'dataMax'] as [number, number],
+        domain: ['dataMin', 'dataMax'] as [string, string],
     }),
     // Common readability props
     angle: -30, textAnchor: 'end' as const, height: 50, dy: 10
   };
 
   const ChartComponent = type === 'line' ? LineChart : BarChart;
-  const DataComponent = type === 'line' ? Line : Bar;
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md w-full min-h-[360px] flex flex-col">
