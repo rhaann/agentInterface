@@ -11,8 +11,7 @@
 !.yarn/versions
 
 # supabase
-/supabase.ts
-**/supabase.ts
+.env.local
 
 # testing
 /coverage
