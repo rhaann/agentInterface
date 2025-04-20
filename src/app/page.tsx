@@ -5,6 +5,7 @@ import SideBar from "@/components/sideBar";
 import Graphs from "@/components/graphs"; // Use the simplified Graphs component below
 import { getTestRunData } from "@/lib/supabaseQueries";
 import { processRawDataForBestPaceChart, SimplePaceDataPoint } from "@/utils/runningDataUtils"; // Import processor and type
+import ChatWidget from '@/components/chatWidget';
 
 export default function Home() {
   // State holds the processed data ready for the chart
@@ -51,6 +52,7 @@ export default function Home() {
                 Error: {errorMsg}
               </div>
             )}
+            <ChatWidget />
 
             {/* Best Pace Trend Chart */}
             {!loading && !errorMsg && bestPaceChartData.length > 0 && (
