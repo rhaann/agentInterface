@@ -112,10 +112,14 @@ const ChatWidget: React.FC = () => {
           throw new Error("Received an unexpected response from the server.");
       }
 
-    } catch (fetchError: any) { // Catch errors from fetch() or thrown errors
+    } catch (fetchError: unknown) { // Use unknown instead of any for better type safety
       console.error("ChatWidget: Failed to send message or process response:", fetchError);
       // Set the error state to display message in the UI
-      setError(fetchError.message || "Sorry, failed to get a response. Please try again.");
+      setError(
+        fetchError instanceof Error 
+          ? fetchError.message 
+          : "Sorry, failed to get a response. Please try again."
+      );
     } finally {
       // This will run whether the try block succeeded or failed
       setIsLoading(false);
@@ -128,7 +132,6 @@ const ChatWidget: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]); // Dependency array includes messages
 
-  // --- Complete JSX structure ---
   return (
     <>
       {/* Chat Toggle Button */}
